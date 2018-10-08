@@ -41,7 +41,10 @@ class Calculator {
     }
     
     func multiply(_ array: [Int]) -> Int {
-        var total = 0;
+        if (array.count == 0) {
+            return 0;
+        }
+        var total = 1;
         for element in array {
             total *= element;
         }
@@ -61,5 +64,29 @@ class Calculator {
     func mathOp(args: [Int], beg: Int, op: (Int, Int) -> Int) -> Int {
         let response = args.reduce(beg, op);
         return response;
+    }
+    
+    func add(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        let xTotal = lhs.0 + rhs.0;
+        let yTotal = lhs.1 + rhs.1;
+        return (xTotal, yTotal);
+    }
+    
+    func subtract(lhs: (Int, Int), rhs: (Int, Int)) -> (Int, Int) {
+        let xTotal = lhs.0 - rhs.0;
+        let yTotal = lhs.1 - rhs.1;
+        return (xTotal, yTotal);
+    }
+    
+    func add(lhs: [String : Int], rhs: [String : Int]) -> [String : Int] {
+        let xTotal = lhs["x"]! + rhs["x"]!;
+        let yTotal = lhs["y"]! + rhs["y"]!;
+        return ["x" : xTotal, "y" : yTotal];
+    }
+    
+    func subtract(lhs: [String : Int], rhs: [String : Int]) -> [String : Int] {
+        let xTotal = lhs["x"]! - rhs["x"]!;
+        let yTotal = lhs["y"]! - rhs["y"]!;
+        return ["x" : xTotal, "y" : yTotal];
     }
 }
